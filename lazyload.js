@@ -11,9 +11,13 @@
  })(typeof global !== "undefined" ? global : this.window || this.global,  function (root) {
     function lazyload(selector){
         if('object' == typeof selector){
-            selector.forEach(function(v){
-                v.src = v.getAttribute('data-src');
-            })
+            if('undefined' == typeof selector[0]){
+                selector.src = selector.getAttribute('data-src');
+            }else{
+                selector.forEach(function(v){
+                    v.src = v.getAttribute('data-src');
+                })
+            }
         }else{
             var selector_all = document.querySelectorAll(selector);
             selector_all.forEach(function(v){
