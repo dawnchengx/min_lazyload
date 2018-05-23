@@ -6,12 +6,12 @@
  * Version: 1.0.0
  * 
  */
- (function(root, factory){
+(function(root, factory){
     root.lazyload = factory();
- })(typeof global !== "undefined" ? global : this.window || this.global,  function (root) {
+})(typeof global !== "undefined" ? global : this.window || this.global,  function (root) {
     function lazyload(selector){
         if('object' == typeof selector){
-            if('undefined' == typeof selector[0]){
+            if('undefined' == typeof selector[0] && 'undefined' == typeof selector.length){
                 selector.src = selector.getAttribute('data-src');
             }else{
                 selector.forEach(function(v){
@@ -26,4 +26,4 @@
         }
     }
     return lazyload;
- })
+})
